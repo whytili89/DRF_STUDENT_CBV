@@ -1,11 +1,7 @@
 from cbvApp.models import Student
 from cbvApp.serializers import StudentSerializer
-from rest_framework import generics
+from rest_framework import viewsets
 
-class StudentList(generics.ListCreateAPIView):
-    queryset = Student.objects.all()
-    serializer_class = StudentSerializer
-
-class StudentDetail(generics.RetrieveDestroyAPIView):
+class StudentViewSet(viewsets.ModelViewSet):
     queryset = Student.objects.all()
     serializer_class = StudentSerializer
