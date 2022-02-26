@@ -1,7 +1,10 @@
-from django.urls import path
-from cbvApp.views import StudentList,StudentDetail
+from django.urls import path, include
+from cbvApp import views
+from rest_framework.routers import DefaultRouter
+
+router = DefaultRouter()
+router.register('students',views.StudentViewSet)
 
 urlpatterns = [
-    path('students', StudentList.as_view()),
-    path('student/<int:pk>',StudentDetail.as_view()),
+   path('',include(router.urls)),
 ]
